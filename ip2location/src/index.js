@@ -123,11 +123,11 @@ async function handleRequest(request) {
 								<tbody>
 									<tr>
 										<td><p>&rtrif; CIDR</p></td>
-										<td><input type='text' class='data' value='` + 'Charter Communications Inc' + `'/></td>
+										<td><input type='text' class='data' value='` + '2603:7080::/28' + `'/></td>
 									</tr>
 									<tr>
 										<td><p>&rtrif; ISP</p></td>
-										<td><input type='text' class='data' value='` + '2603:7080::/28' + `'/></td>
+										<td><input type='text' class='data' value='` + 'Charter Communications Inc' + `'/></td>
 									</tr>
 									<tr>
 										<td><p>&rtrif; ASN</p></td>
@@ -200,8 +200,8 @@ async function handleRequest(request) {
 						}).addTo(map);
 			
 						var circle = L.circle([` + '42.09841' + `, ` + '-76.04937' + `], {
-							color: '#FF7B2F',
-							fillColor: '#FF7B2F',
+							color: '#1472FC',
+							fillColor: '#1472FC',
 							fillOpacity: 0.5,
 							radius: 5000
 						}).addTo(map);
