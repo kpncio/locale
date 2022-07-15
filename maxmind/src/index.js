@@ -53,13 +53,13 @@ async function handleRequest(request) {
 				<head>
 					<title>KPNC Geolocater (Maxmind)</title>
 					<meta charset='UTF-8'>
-					<meta name='theme-color' content='#FF7B2F'>
-					<meta name='author' content='KPNC Project'>
-					<meta name='description' content='KPNC Project: Geolocater: IP Address Lookup...'>
+					<meta name='theme-color' content='#1472FC'>
+					<meta name='author' content='KPNC Technology'>
+					<meta name='description' content='KPNC Technology: Geolocater: IP Address Lookup...'>
 					<meta name='viewport' content='width=device-width, height=device-height, initial-scale=1.0'>
 					<meta http-equiv='X-UA-Compatible' content='ie=edge'>
 					<link href='https://content.kpnc.io/' rel='preconnect'>
-					<link href='https://content.kpnc.io/css/addressio.css' rel='stylesheet'>
+					<link href='https://content.kpnc.io/css/addresser.css' rel='stylesheet'>
 					<link href='https://content.kpnc.io/css/roboto-mono.css' rel='stylesheet'>
 					<link href='https://content.kpnc.io/img/kpnc/favicon.png' rel='icon'>
 					<link href='https://content.kpnc.io/lib/leaflet/leaflet.css' rel='stylesheet'>
