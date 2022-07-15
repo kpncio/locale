@@ -1,0 +1,3 @@
+name = "maxmind"
+main = "src/index.js"
+compatibility_date = "2022-07-15"
