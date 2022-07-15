@@ -1,5 +1,5 @@
 
-# Geolocater (Cloudflare Workers/R2, Maxmind, IP2Locaiton)
+# Geolocater
 
 *Cloudflare Workers/R2, Maxmind GeoIP, IP2Location Lite*
 
