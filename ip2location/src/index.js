@@ -47,24 +47,24 @@ async function handleRequest(request) {
 
 	if (api) {
 		let text = `
-			{ \n
-			\t \"generated\": { \n
-			\t \t \"version\": \"` + version + `\", \n
-			\t \t \"address\": \"` + address + `\", \n
-			\t \t \"decimal\": \"` + decimal + `\" \n
-			\t }, \"extracted\": { \n
-			\t \t \"zone\": \"` + '**' + `\", \n
-			\t \t \"country\": \"` + '**' + `\", \n
-			\t \t \"region\": \"` + '**' + `\", \n
-			\t \t \"city\": \"` + '**' + `\", \n
-			\t \t \"zip\": \"` + '**' + `\", \n
-			\t \t \"latitude\": \"` + '**' + `\", \n
-			\t \t \"longitude\": \"` + '**' + `\", \n
-			\t \t \"cidr\": \"` + '**' + `\", \n
-			\t \t \"asn\": \"` + '**' + `\", \n
-			\t \t \"isp\": \"` + '**' + `\" \n
-			\t } \n
-			} \n
+{
+	"generated": {
+		"version": "${version}",
+		"address": "${address}",
+		"decimal": "${decimal}"
+	}, "extracted": {
+		"zone": "${'**'}",
+		"country": "${'**'}",
+		"region": "${'**'}",
+		"city": "${'**'}",
+		"zip": "${'**'}",
+		"latitude": "${'**'}",
+		"longitude": "${'**'}",
+		"cidr": "${'**'}",
+		"asn": "${'**'}",
+		"isp": "${'**'}"
+	}
+}
 		`;
 
 		return new Response(text, {
@@ -106,15 +106,15 @@ async function handleRequest(request) {
 								<tbody>
 									<tr>
 										<td><p>&rtrif; IP Version</p></td>
-										<td><input type='text' class='data' value='` + version + `'/></td>
+										<td><input type='text' class='data' value='${version}'/></td>
 									</tr>
 									<tr>
 										<td><p>&rtrif; IP Address</p></td>
-										<td><input type='text' class='data' value='` + address + `'/></td>
+										<td><input type='text' class='data' value='${address}'/></td>
 									</tr>
 									<tr>
 										<td><p>&rtrif; IP Decimal</p></td>
-										<td><input type='text' class='data' value='` + decimal + `'/></td>
+										<td><input type='text' class='data' value='${decimal}'/></td>
 									</tr>
 								</tbody>
 							</table>
@@ -128,15 +128,15 @@ async function handleRequest(request) {
 								<tbody>
 									<tr>
 										<td><p>&rtrif; CIDR</p></td>
-										<td><input type='text' class='data' value='` + '2603:7080::/28' + `'/></td>
+										<td><input type='text' class='data' value='${'**'}'/></td>
 									</tr>
 									<tr>
 										<td><p>&rtrif; ISP</p></td>
-										<td><input type='text' class='data' value='` + 'Charter Communications Inc' + `'/></td>
+										<td><input type='text' class='data' value='${'**'}'/></td>
 									</tr>
 									<tr>
 										<td><p>&rtrif; ASN</p></td>
-										<td><input type='text' class='data' value='` + '11351' + `'/></td>
+										<td><input type='text' class='data' value='${'**'}'/></td>
 									</tr>
 								</tbody>
 							</table>
@@ -150,31 +150,31 @@ async function handleRequest(request) {
 								<tbody>
 									<tr>
 										<td><p>&rtrif; Time Zone</p></td>
-										<td><input type='text' class='data' value='` + '-05:00' + `'/></td>
+										<td><input type='text' class='data' value='${'**'}'/></td>
 									</tr>
 									<tr>
 										<td><p>&rtrif; Country</p></td>
-										<td><input type='text' class='data' value='` + 'US' + `'/></td>
+										<td><input type='text' class='data' value='${'**'}'/></td>
 									</tr>
 									<tr>
 										<td><p>&rtrif; Region</p></td>
-										<td><input type='text' class='data' value='` + 'New York' + `'/></td>
+										<td><input type='text' class='data' value='${'**'}'/></td>
 									</tr>
 									<tr>
 										<td><p>&rtrif; City</p></td>
-										<td><input type='text' class='data' value='` + 'Endicott' + `'/></td>
+										<td><input type='text' class='data' value='${'**'}'/></td>
 									</tr>
 									<tr>
 										<td><p>&rtrif; ZIP</p></td>
-										<td><input type='text' class='data' value='` + '13761' + `'/></td>
+										<td><input type='text' class='data' value='${'**'}'/></td>
 									</tr>
 									<tr>
 										<td><p>&rtrif; Latitude</p></td>
-										<td><input type='text' class='data' value='` + '42.09841' + `'/></td>
+										<td><input type='text' class='data' value='${'**'}'/></td>
 									</tr>
 									<tr>
 										<td><p>&rtrif; Longitude</p></td>
-										<td><input type='text' class='data' value='` + '-76.04937' + `'/></td>
+										<td><input type='text' class='data' value='${'**'}'/></td>
 									</tr>
 								</tbody>
 							</table>
@@ -193,7 +193,7 @@ async function handleRequest(request) {
 					</main>
 			
 					<script>
-						var map = L.map('map').setView([` + '42.09841' + `, ` + '-76.04937' + `], 11);
+						var map = L.map('map').setView([${'**'}, ${'**'}], 11);
 								
 						var tiles = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
 							maxZoom: 18,
@@ -204,7 +204,7 @@ async function handleRequest(request) {
 							accessToken: 'pk.eyJ1IjoiYWxiaWU2NTQ0IiwiYSI6ImNsMjV1YmdmMTJkcTMza3BkZTdmbnY1bTcifQ.YpT_p-H1WckYccV8_HoLHg'
 						}).addTo(map);
 			
-						var circle = L.circle([` + '42.09841' + `, ` + '-76.04937' + `], {
+						var circle = L.circle([${'**'}, ${'**'}], {
 							color: '#1472FC',
 							fillColor: '#1472FC',
 							fillOpacity: 0.5,

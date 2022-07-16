@@ -21,26 +21,26 @@ async function handleRequest(request) {
 
 	if (api) {
 		let text = `
-			{ \n
-			\t \"generated\": { \n
-			\t \t \"version\": \"` + version + `\", \n
-			\t \t \"address\": \"` + address + `\", \n
-			\t \t \"ray\": \"` + request.headers.get("cf-ray") + `\" \n
-			\t }, \"extracted\": { \n
-			\t \t \"zone\": \"` + request.cf.timezone + `\", \n
-			\t \t \"continent\": \"` + request.cf.continent + `\", \n
-			\t \t \"country\": \"` + request.cf.country + `\", \n
-			\t \t \"region\": \"` + request.cf.region + `\", \n
-			\t \t \"city\": \"` + request.cf.city + `\", \n
-			\t \t \"zip\": \"` + request.cf.postalCode + `\", \n
-			\t \t \"metro\": \"` + request.cf.metroCode + `\", \n
-			\t \t \"latitude\": \"` + request.cf.latitude + `\", \n
-			\t \t \"longitude\": \"` + request.cf.longitude + `\", \n
-			\t \t \"colo\": \"` + request.cf.colo + `\", \n
-			\t \t \"asn\": \"` + request.cf.asn + `\", \n
-			\t \t \"isp\": \"` + request.cf.asOrganization + `\" \n
-			\t } \n
-			} \n
+{
+	"generated": {
+		"version": "${version}",
+		"address": "${address}",
+		"ray": "${request.headers.get("cf-ray")}"
+	}, "extracted": {
+		"zone": "${request.cf.timezone}",
+		"continent": "${request.cf.continent}",
+		"country": "${request.cf.country}",
+		"region": "${request.cf.region}",
+		"city": "${request.cf.city}",
+		"zip": "${request.cf.postalCode}",
+		"metro": "${request.cf.metroCode}",
+		"latitude": "${request.cf.latitude}",
+		"longitude": "${request.cf.longitude}",
+		"colo": "${request.cf.colo}",
+		"asn": "${request.cf.asn}",
+		"isp": "${request.cf.asOrganization}"
+	}
+} 
 		`;
 
 		return new Response(text, {
@@ -82,15 +82,15 @@ async function handleRequest(request) {
 								<tbody>
 									<tr>
 										<td><p>&rtrif; IP Version</p></td>
-										<td><input type='text' class='data' value='` + version + `'/></td>
+										<td><input type='text' class='data' value='${version}'/></td>
 									</tr>
 									<tr>
 										<td><p>&rtrif; IP Address</p></td>
-										<td><input type='text' class='data' value='` + address + `'/></td>
+										<td><input type='text' class='data' value='${address}'/></td>
 									</tr>
 									<tr>
 										<td><p>&rtrif; CF Ray ID</p></td>
-										<td><input type='text' class='data' value='` + request.headers.get("cf-ray") + `'/></td>
+										<td><input type='text' class='data' value='${request.headers.get("cf-ray")}'/></td>
 									</tr>
 								</tbody>
 							</table>
@@ -104,15 +104,15 @@ async function handleRequest(request) {
 								<tbody>
 									<tr>
 										<td><p>&rtrif; Colo</p></td>
-										<td><input type='text' class='data' value='` + request.cf.colo + `'/></td>
+										<td><input type='text' class='data' value='${request.cf.colo}'/></td>
 									</tr>
 									<tr>
 										<td><p>&rtrif; ISP</p></td>
-										<td><input type='text' class='data' value='` + request.cf.asOrganization + `'/></td>
+										<td><input type='text' class='data' value='${request.cf.asOrganization}'/></td>
 									</tr>
 									<tr>
 										<td><p>&rtrif; ASN</p></td>
-										<td><input type='text' class='data' value='` + request.cf.asn + `'/></td>
+										<td><input type='text' class='data' value='${request.cf.asn}'/></td>
 									</tr>
 								</tbody>
 							</table>
@@ -126,39 +126,39 @@ async function handleRequest(request) {
 								<tbody>
 									<tr>
 										<td><p>&rtrif; Time Zone</p></td>
-										<td><input type='text' class='data' value='` + request.cf.timezone + `'/></td>
+										<td><input type='text' class='data' value='${request.cf.timezone}'/></td>
 									</tr>
 									<tr>
 										<td><p>&rtrif; Continent</p></td>
-										<td><input type='text' class='data' value='` + request.cf.continent + `'/></td>
+										<td><input type='text' class='data' value='${request.cf.continent}'/></td>
 									</tr>
 									<tr>
 										<td><p>&rtrif; Country</p></td>
-										<td><input type='text' class='data' value='` + request.cf.country + `'/></td>
+										<td><input type='text' class='data' value='${request.cf.country}'/></td>
 									</tr>
 									<tr>
 										<td><p>&rtrif; Region</p></td>
-										<td><input type='text' class='data' value='` + request.cf.region + `'/></td>
+										<td><input type='text' class='data' value='${request.cf.region}'/></td>
 									</tr>
 									<tr>
 										<td><p>&rtrif; City</p></td>
-										<td><input type='text' class='data' value='` + request.cf.city + `'/></td>
+										<td><input type='text' class='data' value='${request.cf.city}'/></td>
 									</tr>
 									<tr>
 										<td><p>&rtrif; ZIP</p></td>
-										<td><input type='text' class='data' value='` + request.cf.postalCode + `'/></td>
+										<td><input type='text' class='data' value='${request.cf.postalCode}'/></td>
 									</tr>
 									<tr>
 										<td><p>&rtrif; DWA</p></td>
-										<td><input type='text' class='data' value='` + request.cf.metroCode + `'/></td>
+										<td><input type='text' class='data' value='${request.cf.metroCode}'/></td>
 									</tr>
 									<tr>
 										<td><p>&rtrif; Latitude</p></td>
-										<td><input type='text' class='data' value='` + request.cf.latitude + `'/></td>
+										<td><input type='text' class='data' value='${request.cf.latitude}'/></td>
 									</tr>
 									<tr>
 										<td><p>&rtrif; Longitude</p></td>
-										<td><input type='text' class='data' value='` + request.cf.longitude + `'/></td>
+										<td><input type='text' class='data' value='${request.cf.longitude}'/></td>
 									</tr>
 								</tbody>
 							</table>
@@ -177,7 +177,7 @@ async function handleRequest(request) {
 					</main>
 			
 					<script>
-						var map = L.map('map').setView([` + request.cf.latitude + `, ` + request.cf.longitude + `], 11);
+						var map = L.map('map').setView([${request.cf.latitude}, ${request.cf.longitude}], 11);
 								
 						var tiles = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
 							maxZoom: 18,
@@ -188,7 +188,7 @@ async function handleRequest(request) {
 							accessToken: 'pk.eyJ1IjoiYWxiaWU2NTQ0IiwiYSI6ImNsMjV1YmdmMTJkcTMza3BkZTdmbnY1bTcifQ.YpT_p-H1WckYccV8_HoLHg'
 						}).addTo(map);
 			
-						var circle = L.circle([` + request.cf.latitude + `, ` + request.cf.longitude + `], {
+						var circle = L.circle([${request.cf.latitude}, ${request.cf.longitude}], {
 							color: '#1472FC',
 							fillColor: '#1472FC',
 							fillOpacity: 0.5,
