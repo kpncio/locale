@@ -85,7 +85,7 @@ async function handleRequest(request) {
 					<link href='https://content.kpnc.io/' rel='preconnect'>
 					<link href='https://content.kpnc.io/css/addresser.css' rel='stylesheet'>
 					<link href='https://content.kpnc.io/css/roboto-mono.css' rel='stylesheet'>
-					<link href='https://content.kpnc.io/img/kpnc/favicon.png' rel='icon'>
+					<link href='https://content.kpnc.io/img/kpnc/geolocater.png' rel='icon'>
 					<link href='https://content.kpnc.io/lib/leaflet/leaflet.css' rel='stylesheet'>
 					<script src='https://content.kpnc.io/lib/leaflet/leaflet.js'></script>
 				</head>
