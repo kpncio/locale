@@ -1,7 +1,7 @@
 // Expects: Query strings API and IP:
 // https://app.kpnc.io/ip/ip2location?api=true&ip=1.1.1.1
 
-var bigInt = require("big-integer");
+const bigInt = require("big-integer");
 
 async function handleRequest(request) {
 	const { searchParams } = new URL(request.url);
