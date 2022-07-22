@@ -1,5 +1,5 @@
 // Expects: Query string API:
-// https://app.kpnc.io/ip/maxmind?api=true
+// https://app.kpnc.io/geolocater?api=true
 
 async function handleRequest(request) {
 	const { searchParams } = new URL(request.url);
@@ -51,7 +51,7 @@ async function handleRequest(request) {
 			<!DOCTYPE html>
 			<html lang='en'>
 				<head>
-					<title>KPNC Geolocater (Maxmind)</title>
+					<title>KPNC Geolocater</title>
 					<meta charset='UTF-8'>
 					<meta name='theme-color' content='#1472FC'>
 					<meta name='author' content='KPNC Technology'>

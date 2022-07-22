@@ -1,5 +1,0 @@
-name = "ip2location"
-main = "src/index.js"
-compatibility_date = "2022-07-15"
-
-# Cloudflare D1 Binding
