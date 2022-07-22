@@ -68,7 +68,7 @@ async function handleRequest(request) {
 		`;
 
 		return new Response(text, {
-			headers: { 'content-type': 'text/plain', 'status' : 200 },
+			headers: { 'content-type': 'application/json;charset=UTF-8', 'status' : 200 },
 		})
 	} else {
 		let html = `
