@@ -43,12 +43,12 @@ h1 {
   }
 }
 
-@media (max-width: 400px) {
+@media (max-width: 550px) {
   h1 {
     padding: 0;
 
     img {
-      width: 100%;
+      width: 50%;
       height: auto;
     }
   }
