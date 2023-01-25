@@ -4,6 +4,18 @@
 async function handleRequest(request) {
 	let address = request.headers.get('cf-connecting-ip');
 
+	const { searchParams } = new URL(request.url);
+  	if (searchParams.get('limited')) {
+		return new Response(address, {
+			headers: {
+				'Access-Control-Allow-Headers': '*',
+				'Access-Control-Allow-Origin': '*',
+				'content-type': 'text/plain; charset=UTF-8',
+				'status': 200
+			},
+		});
+	}
+
 	let regex = /^(?:25[0-5]|2[0-4]\d|1\d\d|[1-9]\d|\d)(?:\.(?:25[0-5]|2[0-4]\d|1\d\d|[1-9]\d|\d)){3}$/gm;
 
 	let version = regex.test(address) ? '4' : '6';

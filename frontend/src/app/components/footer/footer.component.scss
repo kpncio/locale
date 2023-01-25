@@ -1,0 +1,93 @@
+@import '../../../colors.scss';
+
+/*Footer*/
+footer {
+  color: $mid;
+  font-size: 18px;
+  font-weight: bold;
+  background-color: $dark;
+
+  img {
+    height: 36px;
+    margin: 5px 10px;
+    transition: 200ms;
+    filter: grayscale(1);
+
+    &:hover {
+      filter: grayscale(0);
+    }
+  }
+
+  a {
+    color: $mid;
+    transition: 200ms;
+    text-decoration: none;
+
+    &:hover {
+      color: $blue;
+    }
+  }
+
+  .full {
+    color: $mid;
+    width: 100%;
+    margin-top: 1em;
+    padding-top: 1em;
+    text-align: left;
+    border-top: 1px solid $mid;
+
+    table {
+      width: 100%;
+      transform: translateY(-30px);
+
+      img {
+        float: left;
+      }
+
+      .social {
+        float: right;
+        font-size: 30px;
+        transform: translateY(20px);
+
+        ul {
+          margin: 0;
+          padding: 0;
+          display: flex;
+          text-align: center;
+          list-style-type: none;
+        }
+      }
+    }
+  }
+
+  .lite {
+    color: $mid;
+    width: 100%;
+    margin-top: 1em;
+    padding-top: 1em;
+    text-align: center;
+    border-top: 1px solid $mid;
+
+    table {
+      margin: auto;
+      transform: translateY(-15px);
+
+      .social {
+        width: 50%;
+        padding: 0;
+        margin: 0 auto;
+        display: block;
+        font-size: 30px;
+        min-width: 224px;
+
+        ul {
+          padding: 0;
+          margin-top: 10px;
+          text-align: center;
+          display: inline-flex;
+          list-style-type: none;
+        }
+      }
+    }
+  }
+}

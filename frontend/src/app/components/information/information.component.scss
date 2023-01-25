@@ -1,0 +1,29 @@
+@import '../../../colors.scss';
+
+/*Information*/
+.text {
+  line-height: 2;
+  padding: 10px 0;
+  border-radius: 20px;
+  margin: 20px auto 0;
+  letter-spacing: 0.5px;
+  width: min(100%, 600px);
+
+  h2 {
+    text-align: center;
+  }
+
+  p {
+    font-size: 16px;
+    text-align: justify;
+  }
+
+  a {
+    color: $white;
+    transition: 250ms;
+
+    &:hover {
+      color: $blue;
+    }
+  }
+}

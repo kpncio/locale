@@ -1,0 +1,110 @@
+<h1 class="nosel">
+  <img
+    src="https://content.kpnc.io/img/kpnc/symbol/KPNC-G.webp"
+    alt="KPNC"
+  />
+</h1>
+
+<main class="container">
+  <h2 class="nosel">See Your IP Data:</h2>
+  <h3 class="nosel">⤷ <a (click)="routerLink(['/information'])">See more</a>...</h3>
+  <div class="box">
+    <div class="section">
+      <small>Data Provider:</small>
+      <div class="provider nosel" (click)="provided()">
+        <a>{{provider}}</a>
+      </div>
+      <form class="input nosel" *ngIf="provider == 'IP2Location'">
+        <input ngModel name="ip" #ip="ngModel" (change)="changed(ip)" type="text" id="ip" placeholder="1.1.1.1 or 2606:4700:4700::1111">
+        <button (click)="clicked()">►</button>
+      </form>
+    </div>
+    <div class="data" *ngIf="response != null && success">
+      <h2>Provided Info:</h2>
+      <table>
+        <tr>
+          <td>IP Version:</td>
+          <td><input readonly value="{{response.provided.version}}"></td>
+        </tr>
+        <tr>
+          <td>IP Address:</td>
+          <td><input readonly value="{{response.provided.address}}"></td>
+        </tr>
+        <tr>
+          <td>CF Ray ID:</td>
+          <td><input readonly value="{{response.provided.ray}}"></td>
+        </tr>
+      </table>
+      <h2>Found Info:</h2>
+      <table>
+        <tr>
+          <td>Timezone:</td>
+          <td><input readonly value="{{response.found.zone}}"></td>
+        </tr>
+        <tr>
+          <td>Country:</td>
+          <td><input readonly value="{{response.found.country}}"></td>
+        </tr>
+        <tr>
+          <td>Region:</td>
+          <td><input readonly value="{{response.found.region}}"></td>
+        </tr>
+        <tr>
+          <td>City:</td>
+          <td><input readonly value="{{response.found.city}}"></td>
+        </tr>
+        <tr>
+          <td>Zip Code:</td>
+          <td><input readonly value="{{response.found.zip}}"></td>
+        </tr>
+        <tr>
+          <td>Latitude:</td>
+          <td><input readonly value="{{response.found.latitude}}"></td>
+        </tr>
+        <tr>
+          <td>Longitude:</td>
+          <td><input readonly value="{{response.found.longitude}}"></td>
+        </tr>
+        <tr *ngIf="response.found.cidr != ''">
+          <td>CIDR:</td>
+          <td><input readonly value="{{response.found.cidr}}"></td>
+        </tr>
+        <tr>
+          <td>ASN:</td>
+          <td><input readonly value="{{response.found.asn}}"></td>
+        </tr>
+        <tr>
+          <td>ISP:</td>
+          <td><input readonly value="{{response.found.isp}}"></td>
+        </tr>
+      </table>
+      <h2 *ngIf="response.proxy.detected">Proxy Info:</h2>
+      <table *ngIf="response.proxy.detected">
+        <tr>
+          <td>Provider:</td>
+          <td><input readonly value="{{response.proxy.provider}}"></td>
+        </tr>
+        <tr>
+          <td>Type:</td>
+          <td><input readonly value="{{response.proxy.type}}"></td>
+        </tr>
+        <tr>
+          <td>Usage:</td>
+          <td><input readonly value="{{response.proxy.usage}}"></td>
+        </tr>
+        <tr>
+          <td>Threat:</td>
+          <td><input readonly value="{{response.proxy.threat}}"></td>
+        </tr>
+      </table>
+      <h2>Map Visual:</h2>
+      <div class="map nosel">
+        <app-map [lat]="response.found.latitude" [long]="response.found.longitude"></app-map>
+      </div>
+    </div>
+    <p class="message nosel" [ngClass]="{'fail': !success, 'succ': success}" *ngIf="message">{{message}}</p>
+    <div class="nosel" style="margin: 18px;" *ngIf="loading">
+      <app-loader></app-loader>
+    </div>
+  </div>
+</main>

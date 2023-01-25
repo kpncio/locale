@@ -1,81 +1,13 @@
 <?php
 
-function os(): string {
-    $user_agent = $_SERVER["HTTP_USER_AGENT"];
-
-    $platform = "unknown";
-
-    $os_array = array(
-        "/windows nt 10/i"      =>  "Windows 10",
-        "/windows nt 6.3/i"     =>  "Windows 8.1",
-        "/windows nt 6.2/i"     =>  "Windows 8",
-        "/windows nt 6.1/i"     =>  "Windows 7",
-        "/windows nt 6.0/i"     =>  "Windows Vista",
-        "/windows nt 5.2/i"     =>  "Windows 2003",
-        "/windows nt 5.1/i"     =>  "Windows XP",
-        "/windows xp/i"         =>  "Windows XP",
-        "/windows nt 5.0/i"     =>  "Windows 2000",
-        "/windows me/i"         =>  "Windows ME",
-        "/win98/i"              =>  "Windows 98",
-        "/win95/i"              =>  "Windows 95",
-        "/win16/i"              =>  "Windows 3.1",
-        "/macintosh|mac os x/i" =>  "Mac OS X",
-        "/mac_powerpc/i"        =>  "Mac OS 9",
-        "/linux/i"              =>  "Linux",
-        "/ubuntu/i"             =>  "Ubuntu",
-        "/iphone/i"             =>  "iPhone",
-        "/ipod/i"               =>  "iPod",
-        "/ipad/i"               =>  "iPad",
-        "/android/i"            =>  "Android",
-        "/blackberry/i"         =>  "Blackberry",
-        "/webos/i"              =>  "WebOS"
-    );
-
-    foreach ( $os_array as $regex => $value ) {
-        if ( preg_match($regex, $user_agent ) ) {
-            $platform = $value;
-        }
-    }
-    return $platform;
-}
-
-function br(): string {
-    $user_agent = $_SERVER["HTTP_USER_AGENT"];
-
-    $browser = "unknown";
-
-    $browser_array = array(
-        "/msie/i"       =>  "Internet Explorer",
-        "/firefox/i"    =>  "Firefox",
-        "/safari/i"     =>  "Safari",
-        "/chrome/i"     =>  "Chrome",
-        "/edge/i"       =>  "Edge",
-        "/opera/i"      =>  "Opera",
-        "/netscape/i"   =>  "Netscape",
-        "/maxthon/i"    =>  "Maxthon",
-        "/konqueror/i"  =>  "Konqueror",
-        "/mobile/i"     =>  "Mobile"
-    );
-
-    foreach ( $browser_array as $regex => $value ) {
-        if ( preg_match( $regex, $user_agent ) ) {
-            $browser = $value;
-        }
-    }
-
-    return $browser;
-}
-
-function ip(): string {
+function ip() {
     if(!empty($_GET["ip"])) {
         if (filter_var($_GET["ip"], FILTER_VALIDATE_IP,  FILTER_FLAG_IPV4)) {
-            return $_GET["ip"];
+            return [$_GET["ip"], false];
+        } elseif (filter_var($_GET["ip"], FILTER_VALIDATE_IP,  FILTER_FLAG_IPV6)) {
+            return [$_GET["ip"], false];
         } else {
-            if (filter_var($_GET["ip"], FILTER_VALIDATE_IP,  FILTER_FLAG_IPV6)) {
-                return $_GET["ip"];
-            } else {
-                return "0.0.0.0";
-            }
+            return ["0.0.0.0", true];
         }
     } else {
         $keys = array("HTTP_CLIENT_IP", "HTTP_X_FORWARDED_FOR", "HTTP_X_FORWARDED", "HTTP_FORWARDED_FOR", "HTTP_FORWARDED", "REMOTE_ADDR");
@@ -84,7 +16,7 @@ function ip(): string {
         {
             if (!empty($_SERVER[$k]) && filter_var($_SERVER[$k], FILTER_VALIDATE_IP))
             {
-                return $_SERVER[$k];
+                return [$_SERVER[$k], false];
             }
         }
     }

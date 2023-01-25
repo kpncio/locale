@@ -1,0 +1,24 @@
+@import '../../../colors.scss';
+
+:host {
+  display: block;
+}
+
+/*Header*/
+header {
+  height: 50px;
+
+  img {
+    height: 33px;
+    margin: auto;
+    display: block;
+    transition: 200ms;
+    transform: translateY(9px);
+    filter: contrast(0) brightness(2);
+
+    &:hover {
+      filter: contrast(1) brightness(1);
+    }
+  }
+}
+
