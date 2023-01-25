@@ -36,7 +36,7 @@ export interface Geolocation {
 })
 export class HomeComponent implements OnInit {
   response: Geolocation | null = null;
-  provider: string = 'GeoIP (CF)';
+  provider: string = 'GeoIP';
   loading: boolean = false;
   success: boolean = false;
   message: string = '';
@@ -45,7 +45,7 @@ export class HomeComponent implements OnInit {
   constructor(private router: Router, private ngZone: NgZone, private fetch: FetchService) {}
 
   ngOnInit(): void {
-    this.provider = 'GeoIP (CF)';
+    this.provider = 'GeoIP';
     this.retrieval('https://app.kpnc.io/geolocater/cloud/');
   }
 
@@ -54,8 +54,8 @@ export class HomeComponent implements OnInit {
   }
 
   provided(): void {
-    this.provider = this.provider == 'GeoIP (CF)' ? 'IP2Location' : 'GeoIP (CF)';
-    this.retrieval(this.provider == 'GeoIP (CF)' ? 'https://app.kpnc.io/geolocater/cloud/' : 'https://app.kpnc.io/geolocater/local/');
+    this.provider = this.provider == 'GeoIP' ? 'IP2Location' : 'GeoIP';
+    this.retrieval(this.provider == 'GeoIP' ? 'https://app.kpnc.io/geolocater/cloud/' : 'https://app.kpnc.io/geolocater/local/');
   }
 
   changed(control: any): void {
