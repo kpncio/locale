@@ -2,7 +2,7 @@ import { FetchService } from 'src/app/services/fetch.service';
 import { Component, NgZone, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-export interface Geolocation {
+export interface IGeolocation {
   provided: {
     version: string;
     address: string;
@@ -35,7 +35,7 @@ export interface Geolocation {
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  response: Geolocation | null = null;
+  response: IGeolocation | null = null;
   provider: string = 'GeoIP';
   loading: boolean = false;
   success: boolean = false;
@@ -74,7 +74,7 @@ export class HomeComponent implements OnInit {
     this.loading = true;
     this.message = '';
 
-    this.fetch.request(url).subscribe((response: Geolocation) => {
+    this.fetch.request(url).subscribe((response: IGeolocation) => {
       this.loading = false;
 
       this.response = response;

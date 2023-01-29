@@ -16,7 +16,7 @@ export class MapComponent implements AfterViewInit {
       
     L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
       maxZoom: 18,
-      attribution: "<a href='https://www.openstreetmap.org/about' target='_blank'>OSM</a> & <a href='https://www.mapbox.com/' target='_blank'>MB</a>",
+      attribution: "<a href='https://www.openstreetmap.org/about' target='_blank'>OSM</a> | <a href='https://www.mapbox.com/' target='_blank'>MB</a>",
       id: 'mapbox/dark-v10',
       tileSize: 512,
       zoomOffset: -1,

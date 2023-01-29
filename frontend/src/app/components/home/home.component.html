@@ -9,16 +9,14 @@
   <h2 class="nosel">See Your IP Data:</h2>
   <h3 class="nosel">⤷ <a (click)="routerLink(['/information'])">See more</a>...</h3>
   <div class="box">
-    <div class="section">
-      <small>Data Provider:</small>
-      <div class="provider nosel" (click)="provided()">
-        <a>{{provider}}</a>
-      </div>
-      <form class="input nosel" *ngIf="provider == 'IP2Location'">
-        <input ngModel name="ip" #ip="ngModel" (change)="changed(ip)" type="text" id="ip" placeholder="1.1.1.1 or 2606:4700:4700::1111">
-        <button (click)="clicked()">►</button>
-      </form>
+    <small>Data Provider:</small>
+    <div class="provider nosel" (click)="provided()">
+      <a>{{provider}}</a>
     </div>
+    <form class="input nosel" *ngIf="provider == 'IP2Location'">
+      <input ngModel name="ip" #ip="ngModel" (change)="changed(ip)" type="text" id="ip" placeholder="1.1.1.1 or 2606:4700:4700::1111">
+      <button (click)="clicked()">►</button>
+    </form>
     <div class="data" *ngIf="response != null && success">
       <h2>Provided Info:</h2>
       <table>
