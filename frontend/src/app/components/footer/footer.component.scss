@@ -10,11 +10,13 @@ footer {
   img {
     height: 36px;
     margin: 5px 10px;
-    transition: 200ms;
-    filter: grayscale(1);
+    transition: 300ms;
+    //filter: grayscale(1);
+    filter: brightness(0.25);
 
     &:hover {
-      filter: grayscale(0);
+      //filter: grayscale(0);
+      filter: brightness(1.0);
     }
   }
 
