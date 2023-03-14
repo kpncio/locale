@@ -3,7 +3,7 @@
 function odb($database)
 {
     $host = "localhost";
-    $user = "root";
+    $user = "ip2location";
     $pass = "";
     $data = $database;
     $conn = new mysqli($host, $user, $pass, $data) or die("Connect failed: %s\n". $conn -> error);
