@@ -36,6 +36,7 @@ export interface IGeolocation {
 })
 export class HomeComponent implements OnInit {
   response: IGeolocation | null = null;
+  extra: IGeolocation | null = null;
   provider: string = 'GeoIP';
   loading: boolean = false;
   success: boolean = false;
@@ -67,7 +68,7 @@ export class HomeComponent implements OnInit {
     this.retrieval(`https://app.kpnc.io/geolocater/local/?ip=${this.ip}`);
   }
 
-  retrieval(url: string): void {
+  retrieval(url: string, extra: boolean = false): void {
     let time = performance.now()
 
     this.response = null;
@@ -77,11 +78,19 @@ export class HomeComponent implements OnInit {
     this.fetch.request(url).subscribe((response: IGeolocation) => {
       this.loading = false;
 
-      this.response = response;
+      if (extra) {
+        this.extra = response;
+      } else {
+        this.response = response;
+      }
 
       if (response.provided.version != '0') {
         this.success = true;
         this.message = `Data retrieved successfully (${Math.round(performance.now() - time)}ms)...`
+
+        if (response.provided.version == '6' && this.provider == 'GeoIP') {
+          this.retrieval('https://ip.kpnc-servers.net/', true);
+        }
       } else {
         this.success = false;
         this.message = 'Error: Invalid IP address inputted...'

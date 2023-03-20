@@ -33,6 +33,23 @@
           <td><input readonly value="{{response.provided.ray}}"></td>
         </tr>
       </table>
+      <div *ngIf="extra != null">
+        <h2>Extra Info:</h2>
+        <table>
+          <tr>
+            <td>IP Version:</td>
+            <td><input readonly value="{{extra.provided.version}}"></td>
+          </tr>
+          <tr>
+            <td>IP Address:</td>
+            <td><input readonly value="{{extra.provided.address}}"></td>
+          </tr>
+          <tr>
+            <td>CF Ray ID:</td>
+            <td><input readonly value="{{extra.provided.ray}}"></td>
+          </tr>
+        </table>
+      </div>
       <h2>Found Info:</h2>
       <table>
         <tr>
