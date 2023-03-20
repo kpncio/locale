@@ -71,9 +71,11 @@ export class HomeComponent implements OnInit {
   retrieval(url: string, extra: boolean = false): void {
     let time = performance.now()
 
-    this.response = null;
-    this.loading = true;
-    this.message = '';
+    if (!extra) {
+      this.response = null;
+      this.loading = true;
+      this.message = '';
+    }
 
     this.fetch.request(url).subscribe((response: IGeolocation) => {
       this.loading = false;
