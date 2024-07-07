@@ -33,7 +33,7 @@
           <td><input readonly value="{{response.provided.ray}}"></td>
         </tr>
       </table>
-      <div *ngIf="extra != null">
+      <div *ngIf="extra != null && !controlling">
         <h2>Extra Info:</h2>
         <table>
           <tr>

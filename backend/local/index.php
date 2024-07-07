@@ -1,7 +1,7 @@
 <?php
 
 // Expects: Query string API:
-// https://app.kpnc.io/geolocater/local/?ip=1.1.1.1
+// https://app.kpnc.io/locale/local/?ip=1.1.1.1
 
 require "ip.inc.php";
 require "2l.inc.php";

@@ -1,5 +1,5 @@
 // Expects: Query string API:
-// https://app.kpnc.io/geolocater/cloud/
+// https://app.kpnc.io/locale/cloud/
 
 async function handleRequest(request) {
 	let address = request.headers.get('cf-connecting-ip');

@@ -9,7 +9,7 @@ import { slider } from './animations'
   animations: [slider]
 })
 export class AppComponent implements OnInit {
-  title = 'KPNC Geolocater';
+  title = 'KPNC Locale';
 
   prepareRoute(outlet: RouterOutlet) {
     return outlet.isActivated ? outlet.activatedRoute: '';

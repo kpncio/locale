@@ -37,6 +37,7 @@ export interface IGeolocation {
 export class HomeComponent implements OnInit {
   response: IGeolocation | null = null;
   extra: IGeolocation | null = null;
+  controlling: boolean = false;
   provider: string = 'GeoIP';
   loading: boolean = false;
   success: boolean = false;
@@ -47,7 +48,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.provider = 'GeoIP';
-    this.retrieval('https://app.kpnc.io/geolocater/cloud/');
+    this.retrieval('https://app.kpnc.io/locale/cloud/');
   }
 
   routerLink(route: any[]): void {
@@ -56,16 +57,17 @@ export class HomeComponent implements OnInit {
 
   provided(): void {
     this.provider = this.provider == 'GeoIP' ? 'IP2Location' : 'GeoIP';
-    this.retrieval(this.provider == 'GeoIP' ? 'https://app.kpnc.io/geolocater/cloud/' : 'https://app.kpnc.io/geolocater/local/');
+    this.retrieval(this.provider == 'GeoIP' ? 'https://app.kpnc.io/locale/cloud/' : 'https://app.kpnc.io/locale/local/');
   }
 
   changed(control: any): void {
     this.ip = control.value;
+    this.controlling = true;
   }
 
   clicked(): void {
     this.provider = 'IP2Location';
-    this.retrieval(`https://app.kpnc.io/geolocater/local/?ip=${this.ip}`);
+    this.retrieval(`https://app.kpnc.io/locale/local/?ip=${this.ip}`);
   }
 
   retrieval(url: string, extra: boolean = false): void {
@@ -97,7 +99,7 @@ export class HomeComponent implements OnInit {
         this.success = false;
         this.message = 'Error: Invalid IP address inputted...'
       }
-    }, _ => {
+    }, (_: any) => {
       this.loading = false;
       this.success = false;
       this.message = 'Error: Unknown error, try again...'
